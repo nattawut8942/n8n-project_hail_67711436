@@ -214,8 +214,7 @@
     {
       "parameters": {
         "sendTo": "natthawut8942@gmail.com",
-        "subject": "แจ้งเตือนเพิ่มสินค้าใหม่: {{ $json.body.name }}",
-        "emailType": "text",
+        "subject": "=แจ้งเตือนเพิ่มสินค้าใหม่: {{ $json['ชื่อสินค้า'] }}",
         "message": "=<h3>เพิ่มสินค้าสำเร็จ!</h3>\n<p>รหัสสินค้า: {{ $json['รหัสสินค้า'] }}</p>\n<p>ชื่อสินค้า:{{ $json['ชื่อสินค้า'] }}</p>\n<p>จำนวน:{{ $json['จำนวน'] }}</p>",
         "options": {}
       },
@@ -336,7 +335,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "c8d1aa2d-85bb-44ba-afc4-61ac59d2f3dc",
+  "versionId": "9d81289f-e052-4f81-aba3-21be9aff9635",
   "meta": {
     "instanceId": "10d9c29af75036fb033cdad741539d864bd761c741ea6fce0775d2de34cf7d32"
   },
