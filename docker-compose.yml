@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n_67711436    #แก้เป็นชื่อโฟลเดอร์ของตนเอง
+    restart: always
+
+    ports:
+      - "5678:5678"   # เปลี่ยน port ด้านหน้า
+
+    environment:
+      - TZ=Asia/Bangkok
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin123
+
+    volumes:
+      - ./n8n_data:/home/node/.n8n

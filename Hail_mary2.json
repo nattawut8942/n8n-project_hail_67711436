@@ -1,0 +1,171 @@
+{
+  "name": "Hail_mary2",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "data",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ff07deba-a36b-4916-933c-546e132efe01",
+      "name": "Webhook",
+      "webhookId": "3e8a1fac-0d67-4d2b-9f35-0af3d4fdcb44"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1DqBsWbYb6kq3YWspx8o2rlc0xV1fi7UDMhXHT4cbt3s",
+          "mode": "list",
+          "cachedResultName": "ลงทะเบียนICT",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1DqBsWbYb6kq3YWspx8o2rlc0xV1fi7UDMhXHT4cbt3s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 640532953,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1DqBsWbYb6kq3YWspx8o2rlc0xV1fi7UDMhXHT4cbt3s/edit#gid=640532953"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "a01b7e61-a608-4cde-baaa-0f71dc85d039",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "cxjWisc4v9upwzAl",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "89235321-e8c0-4ed2-bab2-485cef1d64e1",
+              "name": "tdate",
+              "value": "={{ $json.Timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "3afaa9ed-2ad4-479a-9fe7-6547166023fd",
+              "name": "id",
+              "value": "={{ $json[\"รหัสนักศึกษา\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "cee3f243-ca67-4b75-9441-414c458074f9",
+              "name": "fullname",
+              "value": "={{ $json['ชื่อ-นามสกุล (ภาษาไทย)'] }}",
+              "type": "string"
+            },
+            {
+              "id": "c9ecab94-6924-4042-b0ad-74146c49d460",
+              "name": "department",
+              "value": "={{ $json[\"คณะ\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        0
+      ],
+      "id": "5ac1e4f9-4dd0-4491-82da-f433721f03b8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        624,
+        0
+      ],
+      "id": "c89a40b4-491a-4071-ba13-e83793ed09de",
+      "name": "Respond to Webhook",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "content": "67711436 22/03/2026\nnattawut yodprasert "
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        48,
+        -272
+      ],
+      "typeVersion": 1,
+      "id": "19f74c86-6812-4d62-80a7-8ec717924ec7",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "13a647f5-1c1d-481b-8197-979c6d440503",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "10d9c29af75036fb033cdad741539d864bd761c741ea6fce0775d2de34cf7d32"
+  },
+  "id": "zBE2z5q2BNtrmL0V",
+  "tags": []
+}
