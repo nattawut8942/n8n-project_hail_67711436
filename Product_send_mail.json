@@ -1,20 +1,20 @@
 {
-  "name": "67711436-Web-send-gmail",
+  "name": "Product_send_mail",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "=resgister",
+        "path": "=Productpost",
         "responseMode": "responseNode",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        0,
-        0
+        -528,
+        112
       ],
-      "id": "48d50ee5-a4cd-41fe-84cd-210599ce5d4e",
+      "id": "2bab962b-774d-490f-a49f-8ce3e23bdee5",
       "name": "Webhook",
       "webhookId": "0b3a34ba-27fd-43a0-9684-bad5922ea621"
     },
@@ -24,26 +24,26 @@
           "assignments": [
             {
               "id": "750ee2d7-f554-4a43-ae48-610537c97743",
-              "name": "tdate",
-              "value": "={{ $json.body.tdate }}",
+              "name": "id_product",
+              "value": "={{ $json.body.id_product }}",
               "type": "string"
             },
             {
               "id": "97d515e8-349f-4639-8f91-47b75aae1f42",
-              "name": "id",
-              "value": "={{ $json.body.id }}",
+              "name": "name",
+              "value": "={{ $json.body.name }}",
               "type": "string"
             },
             {
               "id": "eee2b90f-a1a4-418b-a31f-bb08fedcca63",
-              "name": "fullname",
-              "value": "={{ $json.body.fullname }}",
+              "name": "qty",
+              "value": "={{ $json.body.qty }}",
               "type": "string"
             },
             {
               "id": "a021031b-a0f8-4a79-b62e-460c6a439da4",
-              "name": "department",
-              "value": "={{ $json.body.department }}",
+              "name": "price",
+              "value": "={{ $json.body.price }}",
               "type": "string"
             }
           ]
@@ -53,10 +53,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        160,
-        0
+        -368,
+        112
       ],
-      "id": "85f1abdc-b1e1-4c0a-a0ca-f50ff8bda226",
+      "id": "29ea81fc-8284-4a6c-942f-02993d278c10",
       "name": "Edit Fields"
     },
     {
@@ -71,7 +71,7 @@
           "conditions": [
             {
               "id": "016506ea-4603-46fd-a304-239fbfa895fa",
-              "leftValue": "={{ $json.tdate }}",
+              "leftValue": "={{ $json.id_product }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -81,7 +81,7 @@
             },
             {
               "id": "5ef99b50-19ab-43d8-9901-d22bf0dbc24f",
-              "leftValue": "={{ $json.id }}",
+              "leftValue": "={{ $json.name }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -91,7 +91,7 @@
             },
             {
               "id": "bc055d4b-3895-4a75-a492-fa35ee365886",
-              "leftValue": "={{ $json.fullname }}",
+              "leftValue": "={{ $json.qty }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -101,7 +101,7 @@
             },
             {
               "id": "5a39f319-99ca-46d2-937d-2f24ab40bc15",
-              "leftValue": "={{ $json.department }}",
+              "leftValue": "={{ $json.price }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -117,10 +117,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        320,
-        -16
+        -208,
+        96
       ],
-      "id": "05336dab-2fef-4222-87df-c4014e369f8d",
+      "id": "daa80858-18ba-4984-a2bc-3302ca7205f9",
       "name": "If"
     },
     {
@@ -128,63 +128,67 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1DqBsWbYb6kq3YWspx8o2rlc0xV1fi7UDMhXHT4cbt3s",
+          "value": "1uD37ySQvBZ00iaxH79f_smOgi6UBTwcMSPPpIS4r3_s",
           "mode": "list",
-          "cachedResultName": "ลงทะเบียนICT",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1DqBsWbYb6kq3YWspx8o2rlc0xV1fi7UDMhXHT4cbt3s/edit?usp=drivesdk"
+          "cachedResultName": " products_67711436",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1uD37ySQvBZ00iaxH79f_smOgi6UBTwcMSPPpIS4r3_s/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 640532953,
+          "value": "gid=0",
           "mode": "list",
-          "cachedResultName": "Form Responses 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1DqBsWbYb6kq3YWspx8o2rlc0xV1fi7UDMhXHT4cbt3s/edit#gid=640532953"
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1uD37ySQvBZ00iaxH79f_smOgi6UBTwcMSPPpIS4r3_s/edit#gid=0"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Timestamp": "={{ $json.tdate }}",
-            "ชื่อ-นามสกุล (ภาษาไทย)": "={{ $json.fullname }}",
-            "รหัสนักศึกษา": "={{ $json.id }}",
-            "คณะ": "={{ $json.department }}"
+            "รหัสสินค้า": "={{ $json.id_product }}",
+            "ชื่อสินค้า": "={{ $json.name }}",
+            "จำนวน": "={{ $json.qty }}",
+            "ราคา": "={{ $json.price }}"
           },
           "matchingColumns": [],
           "schema": [
             {
-              "id": "Timestamp",
-              "displayName": "Timestamp",
+              "id": "รหัสสินค้า",
+              "displayName": "รหัสสินค้า",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "ชื่อ-นามสกุล (ภาษาไทย)",
-              "displayName": "ชื่อ-นามสกุล (ภาษาไทย)",
+              "id": "ชื่อสินค้า",
+              "displayName": "ชื่อสินค้า",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "รหัสนักศึกษา",
-              "displayName": "รหัสนักศึกษา",
+              "id": "จำนวน",
+              "displayName": "จำนวน",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "คณะ",
-              "displayName": "คณะ",
+              "id": "ราคา",
+              "displayName": "ราคา",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -195,10 +199,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        528,
-        -112
+        0,
+        0
       ],
-      "id": "e2045c46-541f-46fd-80d0-57020a420017",
+      "id": "f4e8fc64-ba5b-4785-af99-09d2d3ca03cb",
       "name": "Append row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -210,18 +214,18 @@
     {
       "parameters": {
         "sendTo": "natthawut8942@gmail.com",
-        "subject": "ข้อมูลลงทะเบียน",
+        "subject": "แจ้งเตือนเพิ่มสินค้าใหม่: {{ $json.body.name }}",
         "emailType": "text",
-        "message": "=วันที่ลงทะเบียน: {{ $json.Timestamp }} \nรหัสนักศึกษา: {{ $json[\"รหัสนักศึกษา\"] }} \nชื่อ-นามสกุล: {{ $json[\"ชื่อ-นามสกุล (ภาษาไทย)\"] }}\nคณะ: {{ $json[\"คณะ\"] }}\nขอบคุณ",
+        "message": "=<h3>เพิ่มสินค้าสำเร็จ!</h3>\n<p>รหัสสินค้า: {{ $json['รหัสสินค้า'] }}</p>\n<p>ชื่อสินค้า:{{ $json['ชื่อสินค้า'] }}</p>\n<p>จำนวน:{{ $json['จำนวน'] }}</p>",
         "options": {}
       },
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        736,
-        -112
+        208,
+        0
       ],
-      "id": "7cf7a55e-20bd-49be-8b16-ba94ccd95325",
+      "id": "5a86fa65-d314-4de3-b1fc-d347f82a075b",
       "name": "Send a message",
       "webhookId": "5fd481c9-5ccd-48a1-beea-02b867404995",
       "credentials": {
@@ -240,10 +244,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        944,
-        -112
+        416,
+        0
       ],
-      "id": "463f001c-1bf3-411e-83bc-5205a7387fb8",
+      "id": "c54e8083-e7e2-4e96-b06a-88fa9d439e04",
       "name": "Respond to Webhook"
     },
     {
@@ -255,10 +259,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        528,
-        80
+        0,
+        192
       ],
-      "id": "a53ef77b-edd0-487e-858a-c06b34376bb4",
+      "id": "18e78f3a-1e13-4809-8406-4f3c64a36c37",
       "name": "Respond to Webhook1"
     }
   ],
@@ -332,11 +336,10 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "4c95d52e-73ac-4b07-a3a9-68e67b04cb7a",
+  "versionId": "c8d1aa2d-85bb-44ba-afc4-61ac59d2f3dc",
   "meta": {
-    "templateCredsSetupCompleted": true,
     "instanceId": "10d9c29af75036fb033cdad741539d864bd761c741ea6fce0775d2de34cf7d32"
   },
-  "id": "2sYCc7axGcKLAfdI",
+  "id": "4sEXhMibygn5uveA",
   "tags": []
 }
